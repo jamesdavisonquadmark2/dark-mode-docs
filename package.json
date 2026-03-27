@@ -1,0 +1,37 @@
+{
+  "name": "dark-mode-docs",
+  "version": "1.0.0",
+  "description": "Dark mode for Google Docs",
+  "scripts": {
+    "dev": "wxt",
+    "build": "wxt build",
+    "zip": "wxt zip",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "postinstall": "wxt prepare"
+  },
+  "keywords": [
+    "chrome-extension",
+    "dark-mode",
+    "google-docs"
+  ],
+  "author": "Moody",
+  "license": "MIT",
+  "type": "module",
+  "dependencies": {
+    "@wxt-dev/module-react": "^1.2.2",
+    "@wxt-dev/storage": "^1.2.8",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "wxt": "^0.20.20"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.2.2",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "jsdom": "^29.0.1",
+    "tailwindcss": "^4.2.2",
+    "typescript": "^6.0.2",
+    "vitest": "^4.1.2"
+  }
+}

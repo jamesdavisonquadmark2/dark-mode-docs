@@ -1,0 +1,11 @@
+/* Warm Dark — sepia-toned, reduced blue light */
+:root {
+  --dm-bg-primary: #2d2417;
+  --dm-bg-surface: #3d3225;
+  --dm-bg-elevated: #4d4235;
+  --dm-text-primary: #e8d5b7;
+  --dm-text-secondary: #b8a589;
+  --dm-border: #5d5245;
+  --dm-accent: #d4a76a;
+  --dm-canvas-filter: invert(0.88) hue-rotate(180deg) sepia(0.15);
+}

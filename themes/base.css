@@ -1,0 +1,1043 @@
+/*
+ * Base dark mode styles for Google Docs
+ * Shared foundation — theme variants override CSS custom properties
+ */
+
+:root {
+  --dm-bg-primary: #1e1e1e;
+  --dm-bg-surface: #2d2d2d;
+  --dm-bg-elevated: #383838;
+  --dm-text-primary: #e0e0e0;
+  --dm-text-secondary: #a0a0a0;
+  --dm-border: #444444;
+  --dm-accent: #8ab4f8;
+  --dm-canvas-filter: invert(0.9) hue-rotate(180deg);
+}
+
+/* ============================================
+   TOP BAR / TITLE BAR
+   ============================================ */
+
+/* Main app background */
+.docs-gm,
+.docs-editor,
+body {
+  background-color: var(--dm-bg-primary) !important;
+  color: var(--dm-text-primary) !important;
+}
+
+/* Title bar area */
+.docs-titlebar-buttons,
+.docs-titlebar-share-client-button,
+.docs-title-outer,
+.docs-title-widget,
+.docs-titlebar-right,
+.docs-titlebar-container,
+#docs-titlebar {
+  background-color: var(--dm-bg-surface) !important;
+  color: var(--dm-text-primary) !important;
+}
+
+/* Header containers — ensure enough height for icon buttons */
+#docs-header,
+#docs-header-container,
+#docs-titlebar-container {
+  min-height: 40px !important;
+  background-color: var(--dm-bg-surface) !important;
+}
+
+/* Title bar badge icons (star, move, lock, etc.) */
+.docs-titlebar-badge-container,
+.docs-titlebar-badge {
+  overflow: visible !important;
+}
+
+/* Star/title input */
+.docs-title-input,
+.docs-title-input-label,
+.docs-title-input-label-inner {
+  color: var(--dm-text-primary) !important;
+}
+
+/* Share button */
+.jfk-button-action,
+.docs-titlebar-button.jfk-button-action {
+  background-color: var(--dm-accent) !important;
+  color: var(--dm-bg-primary) !important;
+}
+
+.jfk-button-action .scb-icon-button-container,
+.jfk-button-action .scb-button-icon {
+  color: var(--dm-bg-primary) !important;
+}
+
+/* Share dropdown arrow */
+.scb-container .jfk-button:not(.jfk-button-action) {
+  background-color: var(--dm-bg-elevated) !important;
+  color: var(--dm-text-primary) !important;
+  border-color: var(--dm-border) !important;
+}
+
+/* ============================================
+   MENU BAR
+   ============================================ */
+
+#docs-menubar,
+.docs-menubar,
+.docs-menubar-menu,
+.goog-menubar,
+.goog-menubar-horizontal,
+.docs-menubars {
+  background-color: var(--dm-bg-surface) !important;
+  border-color: var(--dm-border) !important;
+}
+
+.goog-menubar .goog-control,
+.goog-menubar .goog-menu-button,
+.docs-menubar .docs-menubar-menu,
+.docs-menubar .menu-button,
+.docs-menubar .goog-control,
+#docs-menubar .menu-button,
+#docs-menubar .goog-control,
+.docs-menu-attached-button-above {
+  color: var(--dm-text-primary) !important;
+}
+
+.goog-menubar .goog-control:hover,
+.goog-menubar .goog-control-open,
+.docs-menubar .menu-button:hover,
+.docs-menubar .goog-control-hover,
+.docs-menubar .goog-control-open,
+#docs-menubar .menu-button:hover,
+#docs-menubar .goog-control-hover,
+#docs-menubar .goog-control-open,
+.docs-menubar-menu.goog-control-open {
+  background-color: var(--dm-bg-elevated) !important;
+}
+
+/* ============================================
+   TOOLBAR
+   ============================================ */
+
+#docs-toolbar-wrapper,
+#docs-toolbar,
+.docs-toolbar-wrapper,
+.docs-toolbar,
+.docs-material.docs-toolbar-wrapper,
+[role="toolbar"],
+.docs-primary-toolbars {
+  background-color: var(--dm-bg-surface) !important;
+  border-color: var(--dm-border) !important;
+}
+
+/* Toolbar buttons */
+.goog-toolbar-button,
+.docs-toolbar-button,
+.goog-toolbar-menu-button,
+.goog-toolbar-combo-button {
+  color: var(--dm-text-primary) !important;
+}
+
+/* Toolbar menu button captions (Editing mode, etc.) */
+.goog-toolbar-menu-button-caption,
+.goog-toolbar-menu-button-label {
+  color: var(--dm-text-primary) !important;
+}
+
+/* Toolbar combo inputs (zoom %, font size number) */
+.goog-toolbar-combo-button-input,
+.goog-toolbar-combo-button-input.jfk-textinput,
+#zoomSelect input,
+#fontSizeSelect input {
+  color: var(--dm-text-primary) !important;
+  background-color: var(--dm-bg-elevated) !important;
+  border-color: var(--dm-border) !important;
+}
+
+.goog-toolbar-button:hover,
+.docs-toolbar-button:hover,
+.goog-toolbar-menu-button:hover {
+  background-color: var(--dm-bg-elevated) !important;
+}
+
+/* Toolbar icon filters — invert dark icons to light */
+.docs-icon-img,
+.docs-icon-img-container img,
+.docs-toolbar-button .docs-icon-img {
+  filter: invert(0.8) !important;
+}
+
+/* ============================================
+   SEARCH THE MENUS (Omnibox)
+   ============================================ */
+
+#docs-omnibox-toolbar,
+.docs-omnibox-parent {
+  background-color: var(--dm-bg-elevated) !important;
+}
+
+.docs-omnibox-input,
+.docs-omnibox-input.jfk-textinput {
+  background-color: var(--dm-bg-elevated) !important;
+  color: var(--dm-text-primary) !important;
+  border-color: var(--dm-border) !important;
+}
+
+.docs-omnibox-input::placeholder {
+  color: var(--dm-text-secondary) !important;
+}
+
+/* ============================================
+   DOCUMENT EDITOR AREA
+   ============================================ */
+
+/*
+ * The editor container has inline styles set by Google Docs JS
+ * (e.g., background-color: rgb(248, 250, 253)). We need
+ * !important to override those inline styles.
+ */
+.kix-appview-editor,
+.docs-editor-container,
+.kix-appview-editor-container {
+  background-color: var(--dm-bg-primary) !important;
+}
+
+/* The actual document pages */
+.kix-page,
+.kix-page-content-wrapper {
+  background-color: var(--dm-bg-primary) !important;
+}
+
+/* Page paper — the "sheet" in paginated view */
+.kix-page-paginated {
+  background-color: var(--dm-bg-surface) !important;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* Canvas tiles — the rendered document content */
+canvas.kix-canvas-tile-content {
+  filter: var(--dm-canvas-filter) !important;
+}
+
+/* Re-invert media to preserve original colors */
+.kix-canvas-tile-content img,
+.kix-canvas-tile-content video,
+.kix-canvas-tile-content picture,
+.kix-canvas-tile-content svg {
+  filter: invert(1) hue-rotate(180deg) !important;
+}
+
+/* Page column / page border */
+.kix-page-column {
+  border-color: var(--dm-border) !important;
+}
+
+/* ============================================
+   DROPDOWN MENUS & DIALOGS
+   ============================================ */
+
+.goog-menu,
+.goog-menuitem,
+.docs-material,
+.modal-dialog,
+.modal-dialog-bg,
+[role="menu"],
+[role="dialog"],
+[role="listbox"],
+.apps-menu-hide-mnemonics {
+  background-color: var(--dm-bg-surface) !important;
+  color: var(--dm-text-primary) !important;
+  border-color: var(--dm-border) !important;
+}
+
+.goog-menuitem-content {
+  color: var(--dm-text-primary) !important;
+}
+
+.goog-menuitem-highlight,
+.goog-menuitem:hover,
+[role="menuitem"]:hover {
+  background-color: var(--dm-bg-elevated) !important;
+}
+
+.goog-menuseparator {
+  border-color: var(--dm-border) !important;
+}
+
+/* ============================================
+   COMMENTS & SUGGESTIONS SIDEBAR
+   ============================================ */
+
+.docos-anchoreddocoview,
+.docos-anchoreddocoview-content,
+.docos-anchoreddocoview-internal,
+.docos-docoview-resolve-button-container,
+.docos-docoview-comment,
+.docos-streampane-content,
+.docos-stream-view,
+.docos-anchoreddocoview-input-pane {
+  background-color: var(--dm-bg-surface) !important;
+  color: var(--dm-text-primary) !important;
+  border-color: var(--dm-border) !important;
+}
+
+.docos-docoview-comment-body,
+.docos-docoview-comment-edit,
+.docos-replyview-body,
+.docos-docoview-tesla-conflict .docos-docoview-comment-body {
+  color: var(--dm-text-primary) !important;
+}
+
+/* Comment reply views and input areas */
+.docos-replyview,
+.docos-anchoredreplyview,
+.docos-docoview-replyarea,
+.docos-docoview-rootreply {
+  background-color: var(--dm-bg-surface) !important;
+  color: var(--dm-text-primary) !important;
+}
+
+/* Comment header (name, timestamp) */
+.docos-docoview-header,
+.docos-docoview-header-name,
+.docos-anchoredreplyview-header {
+  background-color: var(--dm-bg-surface) !important;
+  color: var(--dm-text-primary) !important;
+}
+
+/* Comment input textarea */
+.docos-input-textarea,
+.docos-input-pane,
+.docos-input-pane-placeholder {
+  background-color: var(--dm-bg-elevated) !important;
+  color: var(--dm-text-primary) !important;
+  border-color: var(--dm-border) !important;
+}
+
+/* Comment action buttons */
+.docos-docoview-cancel-button,
+.docos-docoview-comment-button,
+.docos-docoview-replybutton {
+  background-color: var(--dm-bg-elevated) !important;
+  color: var(--dm-text-primary) !important;
+}
+
+/* Show more comments link */
+.docos-show-more {
+  background-color: var(--dm-bg-surface) !important;
+  color: var(--dm-accent) !important;
+}
+
+/* Comment timestamp */
+.docos-docoview-header-timestamp {
+  color: var(--dm-text-secondary) !important;
+}
+
+/* ============================================
+   FIND & REPLACE
+   ============================================ */
+
+.docs-findinput-input,
+.docs-findandreplacedialog {
+  background-color: var(--dm-bg-surface) !important;
+  color: var(--dm-text-primary) !important;
+  border-color: var(--dm-border) !important;
+}
+
+.docs-findinput-input input {
+  color: var(--dm-text-primary) !important;
+  background-color: var(--dm-bg-elevated) !important;
+}
+
+/* ============================================
+   SCROLLBARS
+   ============================================ */
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--dm-bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--dm-border);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--dm-text-secondary);
+}
+
+/* ============================================
+   RULER
+   ============================================ */
+
+.kix-ruler,
+.kix-ruler-top,
+.kix-ruler-left,
+.kix-horizontalruler,
+.kix-verticalruler {
+  background-color: var(--dm-bg-surface) !important;
+  filter: invert(0.85) hue-rotate(180deg) !important;
+}
+
+/* ============================================
+   DOCUMENT OUTLINE / LEFT SIDEBAR
+   ============================================ */
+
+.left-sidebar-container,
+.left-sidebar-container-content,
+.docs-document-tab-container,
+.docs-document-tab,
+.docs-document-tab-outline,
+.docs-document-tab-outline-item {
+  background-color: var(--dm-bg-surface) !important;
+  color: var(--dm-text-primary) !important;
+}
+
+.docs-document-tab-outline-item:hover,
+.docs-document-tab.docs-document-tab-selected {
+  background-color: var(--dm-bg-elevated) !important;
+}
+
+/* Navigation widget / Document tabs panel */
+.navigation-widget,
+.navigation-widget-content,
+.kix-outlines-widget-header-contents,
+.kix-outlines-widget-header-container,
+.kix-outlines-widget-header-text-chaptered,
+.outlines-widget {
+  background-color: var(--dm-bg-surface) !important;
+  color: var(--dm-text-primary) !important;
+}
+
+.navigation-widget-header,
+.navigation-item-header {
+  color: var(--dm-text-primary) !important;
+}
+
+.navigation-item {
+  color: var(--dm-text-secondary) !important;
+}
+
+.navigation-item:hover {
+  background-color: var(--dm-bg-elevated) !important;
+}
+
+.navigation-item.location-indicator-highlight {
+  color: var(--dm-accent) !important;
+}
+
+/* Chapter/Tab items in Document tabs panel */
+.chapter-item-label-and-buttons-container {
+  background-color: transparent !important;
+  color: var(--dm-text-secondary) !important;
+  border-color: var(--dm-border) !important;
+  border-radius: 20px !important;
+}
+
+.chapter-item-label-and-buttons-container-selected {
+  background-color: rgba(138, 180, 248, 0.15) !important;
+  color: var(--dm-accent) !important;
+}
+
+.chapter-item-label-and-buttons-container:hover {
+  background-color: rgba(138, 180, 248, 0.08) !important;
+}
+
+.chapter-item-label-and-buttons-container-selected:hover {
+  background-color: rgba(138, 180, 248, 0.2) !important;
+}
+
+.chapter-item-label {
+  color: inherit !important;
+}
+
+.chapter-item-label-and-buttons-container-selected .chapter-item-label {
+  color: var(--dm-accent) !important;
+}
+
+.chapter-item-icon {
+  filter: invert(0.8) !important;
+}
+
+/* Chapter label text (Tab 2 etc non-selected) */
+.chapter-label-content {
+  color: var(--dm-text-secondary) !important;
+}
+
+/* Chapter comment indicator badge */
+.chapterDocoIndicatorViewText {
+  color: var(--dm-text-primary) !important;
+}
+
+.chapter-item-label-and-buttons-container-selected .chapter-item-icon {
+  filter: invert(0.8) sepia(1) saturate(3) hue-rotate(190deg) !important;
+}
+
+/* ============================================
+   EXPLORE / SIDE PANELS
+   ============================================ */
+
+.docs-explore-widget,
+.companion-app-container,
+.companion-app-switcher-container,
+[role="complementary"] {
+  background-color: var(--dm-bg-surface) !important;
+  color: var(--dm-text-primary) !important;
+}
+
+/* ============================================
+   LINK / INPUT CHIPS
+   ============================================ */
+
+.docs-linkbubble-bubble,
+.docs-link-smartchip {
+  background-color: var(--dm-bg-elevated) !important;
+  color: var(--dm-text-primary) !important;
+  border-color: var(--dm-border) !important;
+}
+
+/* ============================================
+   SELECTION / CURSOR
+   ============================================ */
+
+::selection {
+  background-color: rgba(138, 180, 248, 0.3) !important;
+}
+
+/* ============================================
+   TOOLTIPS
+   ============================================ */
+
+.docs-tooltip,
+[data-tooltip],
+.jfk-tooltip {
+  background-color: var(--dm-bg-elevated) !important;
+  color: var(--dm-text-primary) !important;
+}
+
+/* ============================================
+   STATUS BAR (bottom)
+   ============================================ */
+
+.docs-gm-bottombar,
+#docs-editor-bottombar {
+  background-color: var(--dm-bg-surface) !important;
+  color: var(--dm-text-secondary) !important;
+  border-color: var(--dm-border) !important;
+}
+
+/* ============================================
+   VERSION HISTORY
+   ============================================ */
+
+.docs-revisions-chromecover-content,
+.docs-revisions-pane,
+.docs-revisions-pane-content,
+.revision-sidebar-header,
+[class*="docs-revisions"] {
+  background-color: var(--dm-bg-primary) !important;
+  color: var(--dm-text-primary) !important;
+}
+
+.docs-revisions-tile,
+.docs-revisions-tile-selected {
+  background-color: var(--dm-bg-surface) !important;
+  color: var(--dm-text-primary) !important;
+  border-color: var(--dm-border) !important;
+}
+
+.docs-revisions-tile-selected {
+  background-color: var(--dm-bg-elevated) !important;
+  border-left-color: var(--dm-accent) !important;
+}
+
+/* GM3 Wiz revision tiles (new version history UI) */
+.DocsSidebarComponentsSelectedTile,
+.DocsSidebarComponentsSelectedTile[class*="primary-action"] {
+  background-color: var(--dm-bg-elevated) !important;
+  color: var(--dm-text-primary) !important;
+}
+
+.DocsSidebarComponentsUnselectedTile {
+  background-color: transparent !important;
+  color: var(--dm-text-primary) !important;
+}
+
+.appsDocsRevisionsWizSidebarRevisionTile {
+  background-color: transparent !important;
+  color: var(--dm-text-primary) !important;
+}
+
+/* GM3 Wiz card containers used across panels */
+[class*="Gm3WizCardFilled-card"],
+[class*="Gm3WizCard-card__primary-action"] {
+  background-color: var(--dm-bg-surface) !important;
+  color: var(--dm-text-primary) !important;
+}
+
+/* Override specifically for selected state */
+[class*="SelectedTile"][class*="primary-action"] {
+  background-color: var(--dm-bg-elevated) !important;
+}
+
+/* Version history side sheet — text color overrides */
+.appsElementsSideSheetHeader,
+.appsElementsSideSheetTitle {
+  color: var(--dm-text-primary) !important;
+}
+
+/* GM3 select dropdown text */
+[class*="Gm3WizSelectShared-select__selected-text"] {
+  color: var(--dm-text-primary) !important;
+}
+
+/* Section labels (Today, January, etc.) */
+[class*="DocsSidebarComponentsLabel"] {
+  color: var(--dm-text-secondary) !important;
+}
+
+/* Revision tile text (dates, names, descriptions) */
+[class*="appsDocsRevisionsWiz"][class*="BodySmall"],
+[class*="appsDocsRevisionsWiz"][class*="SurfaceVariant"] {
+  color: var(--dm-text-secondary) !important;
+}
+
+[class*="Gm3WizTextFieldOutlined"][class*="__input"] {
+  color: var(--dm-text-primary) !important;
+}
+
+/* View original button */
+[class*="Gm3WizButtonText-button"] {
+  color: var(--dm-accent) !important;
+}
+
+/* Highlight changes checkbox label */
+[class*="Gm3WizFormField"],
+[class*="Gm3WizFormField"] label {
+  color: var(--dm-text-primary) !important;
+}
+
+[class*="Gm3WizCheckbox"] {
+  color: var(--dm-text-primary) !important;
+}
+
+/* ============================================
+   COMMENTS PANEL (side panel view)
+   ============================================ */
+
+.docos-streampane,
+.docos-streampane-content,
+.docos-stream-view,
+.docos-streampane-header,
+.docos-cse-panel,
+.docs-docos-activity-sidebar-header {
+  background-color: var(--dm-bg-primary) !important;
+  color: var(--dm-text-primary) !important;
+}
+
+/* Comments panel tabs (All comments, For you) */
+.docos-streampane-tab,
+.docos-cse-tab {
+  color: var(--dm-text-secondary) !important;
+}
+
+.docos-streampane-tab-active,
+.docos-cse-tab-active {
+  color: var(--dm-accent) !important;
+}
+
+/* Comment cards in stream panel */
+.docos-stream-docoview,
+.docos-stream-docoview-container,
+.docos-streamdocoview,
+.docos-docoview-tesla-conflict.docos-streamdocoview {
+  background-color: var(--dm-bg-surface) !important;
+  color: var(--dm-text-primary) !important;
+  border-color: var(--dm-border) !important;
+}
+
+/* Comment stream search input */
+.docos-streampane-search-input {
+  background-color: var(--dm-bg-elevated) !important;
+  color: var(--dm-text-primary) !important;
+  border-color: var(--dm-border) !important;
+}
+
+/* Comment show replies button */
+.docos-showrepliesbutton-collapsed-internal-container {
+  background-color: var(--dm-bg-surface) !important;
+  color: var(--dm-text-primary) !important;
+}
+
+/* Comments zero/empty states */
+.docos-streampane-zero-state,
+.docos-streampane-all-filtered-out-state {
+  background-color: var(--dm-bg-primary) !important;
+  color: var(--dm-text-secondary) !important;
+}
+
+/* Comments panel — force all text to be readable */
+.docs-docos-activity-sidebar-header-title {
+  color: var(--dm-text-primary) !important;
+}
+
+.docs-docos-activity-sidebar-header-action-container {
+  color: var(--dm-text-primary) !important;
+}
+
+.docs-tabbar-tablabel {
+  color: var(--dm-text-secondary) !important;
+}
+
+/* Stream comment card text */
+.docos-streamdocoview-header-container,
+.streamdocoview-header,
+.streamdocoview-header-location-container,
+.streamdocoview-header-prefix-location,
+.streamdocoview-header-quote-container,
+.streamdocoview-header-quote {
+  color: var(--dm-text-secondary) !important;
+}
+
+.docos-streamdocoview-author,
+.docos-author {
+  color: var(--dm-text-primary) !important;
+}
+
+.docos-streamdocoview-timestamp,
+.docos-replyview-timestamp {
+  color: var(--dm-text-secondary) !important;
+}
+
+.docos-streamdocoview-body,
+.docos-streamreplyview-body {
+  color: var(--dm-text-primary) !important;
+}
+
+/* Comment show less / minimized */
+.docos-show-less,
+.docos-anchoreddocoview-minimized {
+  background-color: var(--dm-bg-surface) !important;
+  color: var(--dm-text-primary) !important;
+}
+
+/* Comment availability banner */
+.docos-availability-banner {
+  background-color: var(--dm-bg-elevated) !important;
+  color: var(--dm-text-primary) !important;
+}
+
+/* People autocomplete in comments */
+.peoplekitComponentsAutocompletePopupContainer,
+.peoplekitComponentsAutocompleteInlineContainer {
+  background-color: var(--dm-bg-surface) !important;
+  color: var(--dm-text-primary) !important;
+}
+
+/* ============================================
+   MEET / VIDEO CALL PANEL
+   ============================================ */
+
+.MEET_IN_EDITORS_SIDEBAR_DOCKED_FRAME,
+[class*="MEET_IN_EDITORS"],
+.companion-app-container iframe {
+  background-color: var(--dm-bg-primary) !important;
+  color: var(--dm-text-primary) !important;
+}
+
+/* ============================================
+   SHARE BUTTON & QUICK ACTIONS
+   ============================================ */
+
+#scb-quick-actions-menu-button,
+.scb-quick-actions-menu-button {
+  background-color: var(--dm-bg-elevated) !important;
+  color: var(--dm-text-primary) !important;
+}
+
+/* ============================================
+   TOOLBAR EXTRAS
+   ============================================ */
+
+/* Accessibility menu button */
+#docs-toolbar-accessibility-menu {
+  background-color: var(--dm-bg-surface) !important;
+  color: var(--dm-text-primary) !important;
+}
+
+/* Spark/AI button */
+.docs-title-spark-button-content-wrapper {
+  background-color: var(--dm-bg-elevated) !important;
+}
+
+/* Blob notice button */
+#blob-notice-button {
+  background-color: var(--dm-bg-elevated) !important;
+  color: var(--dm-text-primary) !important;
+}
+
+/* ============================================
+   EDITOR CONTAINER OVERRIDES
+   ============================================ */
+
+#docs-editor-container,
+#docs-editor {
+  background-color: var(--dm-bg-primary) !important;
+}
+
+/* ============================================
+   NAVIGATION SIDEBAR EXTRAS
+   ============================================ */
+
+/* Navigation item vertical lines */
+.navigation-item-vertical-line-middle,
+.navigation-item-vertical-line-bottom,
+.navigation-item-vertical-line-top {
+  background-color: var(--dm-border) !important;
+}
+
+/* Outline widget header shadow */
+.kix-outlines-widget-header-shadow {
+  background-color: var(--dm-bg-surface) !important;
+}
+
+/* Next chapter fab button */
+.nextChapterBottomFabView {
+  background-color: var(--dm-bg-elevated) !important;
+  color: var(--dm-text-primary) !important;
+}
+
+/* Mini chapter switcher */
+.miniChapterSwitcherNavigationEntryPointMask {
+  background-color: var(--dm-bg-surface) !important;
+}
+
+.miniChapterSwitcherView,
+.miniChapterSwitcherMultipleChapters,
+.miniChapterSwitcherFloatingNavigationEntryPoint,
+.miniChapterSwitcherSelectedChapterInfoText,
+.docs-material-gm-select-caption {
+  color: var(--dm-text-primary) !important;
+}
+
+/* Side panel app switcher indicators */
+.agca-gab-icon-selection-indicator {
+  background-color: var(--dm-accent) !important;
+}
+
+/* ============================================
+   DROPDOWNS & SELECT BOXES
+   ============================================ */
+
+.docs-material-gm-select-outer-box {
+  background-color: var(--dm-bg-elevated) !important;
+  color: var(--dm-text-primary) !important;
+  border-color: var(--dm-border) !important;
+}
+
+/* ============================================
+   RULER OVERRIDES
+   ============================================ */
+
+#kix-horizontal-ruler,
+#kix-vertical-ruler,
+.docs-ruler-background-inner {
+  background-color: var(--dm-bg-surface) !important;
+}
+
+/* ============================================
+   SHARE DIALOG & DRIVE SHARING IFRAME
+   ============================================ */
+
+/*
+ * Google's share dialog uses three theming systems:
+ * 1. GM3 CSS variables (--gm3-sys-color-*)
+ * 2. MDC theme variables (--mdc-theme-*)
+ * 3. Drive theme variables (--dt-*)
+ * 4. Hardcoded rgb() values on obfuscated class selectors
+ *
+ * We override all variable systems AND use a broad wildcard
+ * approach for hardcoded colors since class names are obfuscated.
+ */
+
+/* Override ALL theming variable systems */
+:root,
+body,
+[class*="gm3"],
+[class*="Gm3"] {
+  /* GM3 surface colors */
+  --gm3-sys-color-surface: var(--dm-bg-surface) !important;
+  --gm3-sys-color-surface-bright: var(--dm-bg-surface) !important;
+  --gm3-sys-color-surface-dim: var(--dm-bg-primary) !important;
+  --gm3-sys-color-surface-container: var(--dm-bg-surface) !important;
+  --gm3-sys-color-surface-container-low: var(--dm-bg-surface) !important;
+  --gm3-sys-color-surface-container-high: var(--dm-bg-elevated) !important;
+  --gm3-sys-color-surface-container-highest: var(--dm-bg-elevated) !important;
+  --gm3-sys-color-surface-variant: var(--dm-bg-elevated) !important;
+  --gm3-sys-color-inverse-surface: var(--dm-text-primary) !important;
+  /* GM3 text colors */
+  --gm3-sys-color-on-surface: var(--dm-text-primary) !important;
+  --gm3-sys-color-on-surface-variant: var(--dm-text-secondary) !important;
+  --gm3-sys-color-on-inverse-surface: var(--dm-bg-primary) !important;
+  --gm3-sys-color-on-secondary-container: var(--dm-text-primary) !important;
+  /* GM3 borders */
+  --gm3-sys-color-outline: var(--dm-border) !important;
+  --gm3-sys-color-outline-variant: var(--dm-border) !important;
+  /* GM3 cards */
+  --gm3-card-elevated-container-color: var(--dm-bg-surface) !important;
+  --gm3-card-filled-container-color: var(--dm-bg-surface) !important;
+  --gm3-sys-color-secondary-container: var(--dm-bg-elevated) !important;
+  /* MDC theme variables */
+  --mdc-theme-surface: var(--dm-bg-surface) !important;
+  --mdc-theme-background: var(--dm-bg-primary) !important;
+  --mdc-theme-on-surface: var(--dm-text-primary) !important;
+  --mdc-theme-text-primary-on-background: var(--dm-text-primary) !important;
+  --mdc-theme-text-secondary-on-background: var(--dm-text-secondary) !important;
+  --mdc-theme-text-hint-on-background: var(--dm-text-secondary) !important;
+  --mdc-theme-primary: var(--dm-accent) !important;
+  --mdc-theme-on-primary: var(--dm-bg-primary) !important;
+  /* Drive theme variables */
+  --dt-on-surface: var(--dm-text-primary) !important;
+  --dt-on-surface-variant: var(--dm-text-secondary) !important;
+  --dt-surface: var(--dm-bg-surface) !important;
+  --dt-surface-container: var(--dm-bg-surface) !important;
+  --dt-surface-container-low: var(--dm-bg-surface) !important;
+  --dt-surface-container-high: var(--dm-bg-elevated) !important;
+  --dt-surface-container-highest: var(--dm-bg-elevated) !important;
+  --dt-outline: var(--dm-border) !important;
+  --dt-outline-variant: var(--dm-border) !important;
+}
+
+/*
+ * Nuclear override for share dialog: force dark backgrounds and
+ * light text on ALL elements. Google's obfuscated classes like
+ * .r6B9Fd, .P2Hi5d, .vhoiae use hardcoded colors — we can't
+ * target them by stable name, so we override broadly.
+ */
+
+/* Dialog container background */
+[role="dialog"],
+[role="dialog"] > div,
+[role="dialog"] > div > div {
+  background-color: var(--dm-bg-surface) !important;
+  color: var(--dm-text-primary) !important;
+}
+
+/* ALL text inside share dialog */
+[role="dialog"] div,
+[role="dialog"] span,
+[role="dialog"] p,
+[role="dialog"] label,
+[role="dialog"] h2,
+[role="dialog"] h3 {
+  color: var(--dm-text-primary) !important;
+}
+
+/* Share dialog input fields */
+[role="dialog"] input,
+[role="dialog"] textarea {
+  background-color: var(--dm-bg-elevated) !important;
+  color: var(--dm-text-primary) !important;
+  border-color: var(--dm-border) !important;
+}
+
+/* Share dialog buttons */
+[role="dialog"] button {
+  color: var(--dm-text-primary) !important;
+}
+
+/* Share dialog links */
+[role="dialog"] a {
+  color: var(--dm-accent) !important;
+}
+
+/* Share dialog people list and permission dropdowns */
+[role="dialog"] [role="listbox"],
+[role="dialog"] [role="option"],
+[role="dialog"] select {
+  background-color: var(--dm-bg-elevated) !important;
+  color: var(--dm-text-primary) !important;
+}
+
+/* Google Material icons in dialog */
+[role="dialog"] .google-material-icons {
+  color: var(--dm-text-secondary) !important;
+}
+
+/* Inline style overrides for white backgrounds */
+[role="dialog"] [style*="background-color: rgb(255, 255, 255)"],
+[role="dialog"] [style*="background-color:rgb(255,255,255)"],
+[role="dialog"] [style*="background-color: rgb(248"],
+[role="dialog"] [style*="background-color:rgb(248"] {
+  background-color: var(--dm-bg-surface) !important;
+}
+
+/* GM3 card containers (obfuscated class .eVDL2-WsjYwc etc.)
+   These set --gm3-card-elevated-container-color locally to #fff,
+   overriding our :root declaration. Force background directly. */
+.eVDL2-WsjYwc,
+[class*="WsjYwc"] {
+  background-color: var(--dm-bg-surface) !important;
+  --gm3-card-elevated-container-color: var(--dm-bg-surface) !important;
+  --gm3-sys-color-surface-container-low: var(--dm-bg-surface) !important;
+}
+
+/* Chip/tag elements (email pills) */
+[role="dialog"] span[style*="background"] {
+  background-color: var(--dm-bg-elevated) !important;
+}
+
+/* ============================================
+   PEOPLE AUTOCOMPLETE / MD COMPONENT LISTS
+   ============================================ */
+
+/*
+ * People picker uses Material Design Web Components (VfPpkd-*).
+ * Google's hardcoded selectors like .r6B9Fd .VfPpkd-rymPhb-fpDzbe-fmcmS
+ * set color to rgb(60,64,67). We use broad span/li selectors with
+ * !important since attribute selectors alone don't beat 3-class specificity
+ * in same-importance cascade order.
+ */
+
+/* All MD list items */
+ul[class*="rymPhb"],
+li[class*="rymPhb"],
+li[class*="ibnC6b"] {
+  background-color: var(--dm-bg-surface) !important;
+  color: var(--dm-text-primary) !important;
+}
+
+li[class*="ibnC6b"]:hover,
+li[class*="ibnC6b"]:focus {
+  background-color: var(--dm-bg-elevated) !important;
+}
+
+/* ALL spans inside MD list items — names and emails */
+li[class*="ibnC6b"] span {
+  color: var(--dm-text-primary) !important;
+}
+
+/* Email secondary text — slightly dimmer */
+li[class*="ibnC6b"] span[class*="L8ivfd"] {
+  color: var(--dm-text-secondary) !important;
+}
+
+/* Catch-all for any fmcmS text elements (name/email spans) */
+span[class*="fpDzbe-fmcmS"] {
+  color: var(--dm-text-primary) !important;
+}
+
+span[class*="L8ivfd-fmcmS"] {
+  color: var(--dm-text-secondary) !important;
+}
+
+/* MD menu surfaces and dropdowns */
+div[class*="xl07Ob"] {
+  background-color: var(--dm-bg-surface) !important;
+  color: var(--dm-text-primary) !important;
+}

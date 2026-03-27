@@ -1,0 +1,11 @@
+/* AMOLED Black — true black for OLED screens */
+:root {
+  --dm-bg-primary: #000000;
+  --dm-bg-surface: #121212;
+  --dm-bg-elevated: #1e1e1e;
+  --dm-text-primary: #ffffff;
+  --dm-text-secondary: #b0b0b0;
+  --dm-border: #333333;
+  --dm-accent: #8ab4f8;
+  --dm-canvas-filter: invert(1) hue-rotate(180deg);
+}
